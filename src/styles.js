@@ -15,10 +15,19 @@ export const Wrapper = styled.div`
 `;
 
 export const Table = styled.table`
+  border-spacing: 1em;
   td,
   th {
-    text-align: left;
+    border-collapse: collapse;
     padding: 0.5em;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 768px) {
   }
 `;
 
@@ -28,3 +37,5 @@ export const Title = styled.h1`
     color: #ff9999;
   }
 `;
+
+export const Filters = styled.div``;

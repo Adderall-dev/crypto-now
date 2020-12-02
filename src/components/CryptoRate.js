@@ -1,28 +1,39 @@
 import React, { useEffect } from "react";
 import { Table } from "../styles";
 import { useSelector, useDispatch } from "react-redux";
-import coin, { fetchCoins } from "../redux/ducks/coin";
+import { fetchCoins } from "../redux/ducks/coin";
 //components
 import CryptoRateCard from "./CryptoRateCard";
+import CryptoFilters from "./CryptoFilters";
 
 const CryptoRate = () => {
   const dispatch = useDispatch();
+  const limit = useSelector((state) => state.coin.limit);
 
   useEffect(() => {
-    dispatch(fetchCoins());
-  }, []);
+    dispatch(fetchCoins(limit));
+  }, [limit]);
 
   const coinData = useSelector((state) => state.coin.coins);
+
   return coinData.loading ? (
     <h1>...</h1>
   ) : coinData.error ? (
     <h1>{coinData.error}</h1>
   ) : (
     <div>
+      <CryptoFilters />
       <Table>
         <thead>
-          <th>Currency name</th>
-          <th>Price</th>
+          <tr>
+            <th></th>
+            <th>Currency</th>
+            <th>Currency name</th>
+            <th>Price</th>
+            <th>
+              Change <span>24h</span>
+            </th>
+          </tr>
         </thead>
         <tbody>
           {coinData &&
