@@ -19,10 +19,14 @@ export const Wrapper = styled.div`
 
 export const Table = styled.table`
   border-spacing: 0.4em;
+  border-collapse: collapse;
   td,
   th {
-    border-collapse: collapse;
     padding: 0.5em;
+  }
+
+  tr:nth-child(even) {
+    background-color: #ffc8c8;
   }
 
   img {
