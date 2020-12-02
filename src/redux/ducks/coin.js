@@ -9,7 +9,7 @@ const initialState = {
   loading: false,
   coins: [],
   error: "",
-  limit: 10,
+  limit: 5,
 };
 // eslint-disable-next-line
 export default (state = initialState, { type, payload }) => {

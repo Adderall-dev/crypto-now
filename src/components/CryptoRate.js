@@ -30,9 +30,7 @@ const CryptoRate = () => {
             <th>Currency</th>
             <th>Currency name</th>
             <th>Price</th>
-            <th>
-              Change <span>24h</span>
-            </th>
+            <th>Change 24h</th>
           </tr>
         </thead>
         <tbody>

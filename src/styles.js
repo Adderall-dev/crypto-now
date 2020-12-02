@@ -12,10 +12,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Table = styled.table`
-  border-spacing: 1em;
+  border-spacing: 0.4em;
   td,
   th {
     border-collapse: collapse;
@@ -28,6 +31,17 @@ export const Table = styled.table`
   }
 
   @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    th:nth-child(2) {
+      display: none;
+    }
+    td:first-child,
+    td:nth-child(2) {
+      display: none;
+    }
   }
 `;
 
@@ -39,7 +53,12 @@ export const Title = styled.h1`
 `;
 
 export const Filters = styled.div`
-  width: 45%;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
   button {
     padding: 0.8em;
     margin: 0.2em;
