@@ -38,4 +38,20 @@ export const Title = styled.h1`
   }
 `;
 
-export const Filters = styled.div``;
+export const Filters = styled.div`
+  width: 45%;
+  button {
+    padding: 0.8em;
+    margin: 0.2em;
+    border: none;
+    border-radius: 10px;
+    background: #ffc8c8;
+    box-shadow: 1px 1px 2px #c79c9c, -1px -1px 2px #fff4f4;
+    &:hover {
+      border-radius: 10px;
+      background: #ffc8c8;
+      box-shadow: inset 1px 1px 2px #c79c9c, inset -1px -1px 2px #fff4f4;
+      cursor: pointer;
+    }
+  }
+`;
