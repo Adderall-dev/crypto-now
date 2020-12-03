@@ -17,6 +17,16 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Td = styled.td`
+  color: ${(props) => props.color || "black"};
+  img {
+    position: relative;
+    color: ${(props) => props.color || "black"};
+    transform: scale(0.5);
+    top: 0.25em;
+  }
+`;
+
 export const Table = styled.table`
   border-spacing: 0.4em;
   border-collapse: collapse;
@@ -56,13 +66,14 @@ export const Title = styled.h1`
   }
 `;
 
-export const Filters = styled.div`
+export const ButtonGroup = styled.div`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
+
   button {
     padding: 0.8em;
     margin: 0.2em;

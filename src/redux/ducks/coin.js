@@ -4,12 +4,14 @@ const FETCH_COINS_SUCCESS = "coin/fetchCoinsSuccess";
 const FETCH_COINS_REQUEST = "coin/fetchCoinsRequest";
 const FETCH_COINS_FAILURE = "coin/fetchCoinsFailure";
 const SELECT_LIMIT = "coin/selectLimit";
+const SELECT_BASE = "coin/selectBase";
 
 const initialState = {
   loading: false,
   coins: [],
   error: "",
   limit: 5,
+  baseCurr: "USD",
 };
 // eslint-disable-next-line
 export default (state = initialState, { type, payload }) => {
@@ -22,6 +24,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, loading: false, coins: [], error: payload };
     case SELECT_LIMIT:
       return { ...state, limit: payload };
+    case SELECT_BASE:
+      return { ...state, baseCurr: payload };
     default:
       return state;
   }
@@ -46,12 +50,17 @@ export const selectLimit = (limit) => ({
   payload: limit,
 });
 
-export const fetchCoins = (limit) => {
+export const selectBase = (baseCurr) => ({
+  type: SELECT_BASE,
+  payload: baseCurr,
+});
+
+export const fetchCoins = (limit, baseCurr) => {
   return (dispatch) => {
     dispatch(fetchCoinsRequest);
     axios
       .get(
-        `https://api.coinranking.com/v1/public/coins?sort=coinranking&limit=${limit}`
+        `https://api.coinranking.com/v1/public/coins?sort=coinranking&base=${baseCurr}&limit=${limit}`
       )
       .then((res) => {
         const users = res.data;

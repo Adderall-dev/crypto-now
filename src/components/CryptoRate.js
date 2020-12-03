@@ -1,20 +1,25 @@
 import React, { useEffect } from "react";
 import { Table } from "../styles";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCoins } from "../redux/ducks/coin";
+import coin, { fetchCoins } from "../redux/ducks/coin";
 //components
 import CryptoRateCard from "./CryptoRateCard";
 import CryptoFilters from "./CryptoFilters";
+import CryptoTableHeader from "./CryptoTableHeader";
+import CryptoSelectBase from "./CryptoSelectBase";
 
 const CryptoRate = () => {
   const dispatch = useDispatch();
   const limit = useSelector((state) => state.coin.limit);
+  const baseCurr = useSelector((state) => state.coin.baseCurr);
 
   useEffect(() => {
-    dispatch(fetchCoins(limit));
-  }, [limit]);
+    dispatch(fetchCoins(limit, baseCurr));
+    // eslint-disable-next-line
+  }, [limit, baseCurr]);
 
   const coinData = useSelector((state) => state.coin.coins);
+  const baseCurrData = coinData;
 
   return coinData.loading ? (
     <h1>...</h1>
@@ -23,22 +28,22 @@ const CryptoRate = () => {
   ) : (
     <div>
       <CryptoFilters />
+      <CryptoSelectBase />
       <Table>
         <thead>
-          <tr>
-            <th></th>
-            <th>Currency</th>
-            <th>Currency name</th>
-            <th>Price</th>
-            <th>Change 24h</th>
-          </tr>
+          <CryptoTableHeader />
         </thead>
         <tbody>
           {coinData &&
             coinData.data &&
+            baseCurrData.data.base &&
             coinData.data.coins.map((coin) => (
               <tr>
-                <CryptoRateCard key={coin.id} coin={coin} />
+                <CryptoRateCard
+                  key={coin.id}
+                  coin={coin}
+                  base={baseCurrData.data.base}
+                />
               </tr>
             ))}
         </tbody>
