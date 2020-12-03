@@ -19,7 +19,6 @@ const CryptoRate = () => {
   }, [limit, baseCurr]);
 
   const coinData = useSelector((state) => state.coin.coins);
-  const baseCurrData = coinData;
 
   return coinData.loading ? (
     <h1>...</h1>
@@ -36,13 +35,12 @@ const CryptoRate = () => {
         <tbody>
           {coinData &&
             coinData.data &&
-            baseCurrData.data.base &&
             coinData.data.coins.map((coin) => (
               <tr>
                 <CryptoRateCard
                   key={coin.id}
                   coin={coin}
-                  base={baseCurrData.data.base}
+                  base={coinData.data.base}
                 />
               </tr>
             ))}
