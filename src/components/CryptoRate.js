@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Table } from "../styles";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCoins } from "../redux/ducks/coin";
+
 //components
 import CryptoRateCard from "./CryptoRateCard";
 import CryptoFilters from "./CryptoFilters";
@@ -36,12 +37,8 @@ const CryptoRate = () => {
           {coinData &&
             coinData.data &&
             coinData.data.coins.map((coin) => (
-              <tr>
-                <CryptoRateCard
-                  key={coin.id}
-                  coin={coin}
-                  base={coinData.data.base}
-                />
+              <tr key={coin.id}>
+                <CryptoRateCard coin={coin} base={coinData.data.base} />
               </tr>
             ))}
         </tbody>
