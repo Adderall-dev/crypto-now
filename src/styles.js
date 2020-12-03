@@ -21,7 +21,6 @@ export const Td = styled.td`
   color: ${(props) => props.color || "black"};
   img {
     position: relative;
-    color: ${(props) => props.color || "black"};
     transform: scale(0.5);
     top: 0.25em;
   }
