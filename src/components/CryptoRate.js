@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Table } from "../styles";
 import { useSelector, useDispatch } from "react-redux";
-import coin, { fetchCoins } from "../redux/ducks/coin";
+import { fetchCoins } from "../redux/ducks/coin";
 //components
 import CryptoRateCard from "./CryptoRateCard";
 import CryptoFilters from "./CryptoFilters";
